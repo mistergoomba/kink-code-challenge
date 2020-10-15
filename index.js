@@ -31,7 +31,24 @@ nunjucks.configure(app.get('views'), {
 });
 
 app.get('/', (request, response) => {
-	const options = { pageTitle: 'Homepage' };
+	const options = {
+		pageTitle: 'Homepage',
+		currentYear: new Date().getFullYear(),
+		comments: {
+			arbitraryID0: {
+				userName: 'mistergoomba',
+				content: 'Hooray!',
+			},
+			arbitraryID1: {
+				userName: 'Meowtin',
+				content: 'Hi, there!',
+			},
+			arbitraryID2: {
+				userName: 'Goombalicious',
+				content: 'Oh, man I\'ve got lots to say! First of all, I want to say the first thing, then I\'m going to say the second thing.',
+			},
+		},
+	};
 	return response.render('home', options);
 });
 

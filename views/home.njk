@@ -1,5 +1,79 @@
 {% extends "layout.njk" %}
 
-{% block content %}
-<h1>Hello, world!</h1>
+{% block header %}
+	<div class="navbar">
+		<a href="/" class="main-logo">Kink.com</a>
+
+		<nav>
+			<a href="/">One Link</a>
+			<a href="/">Two Link</a>
+			<a href="/">Red Link</a>
+			<a href="/">Blue Link</a>
+		</nav>
+	</div>
+{% endblock %}
+
+{% block sectionTop %}
+	<section class="description">
+		<div class="description-text section-column">
+			<h1>Hey, There You Are!</h1>
+			<p>
+				What is the text about? Who knows? It doesn't matter. All that matters is that there is text.
+				What is the text about? Who knows? It doesn't matter. All that matters is that there is text.
+				What is the text about? Who knows? It doesn't matter. All that matters is that there is text.
+				What is the text about? Who knows? It doesn't matter. All that matters is that there is text.
+			</p>
+			<p>How fun!</p>
+		</div>
+
+		<div class="description-image section-column">
+			<img src="/assets/placeholder.png" alt="" />
+		</div>
+	</section>
+{% endblock %}
+
+{% block sectionBottom %}
+	<section class="comments">
+		<div class="comments-container">
+			<div class="comments-form section-column">
+				<h2>Add Your Comment</h2>
+
+				<form id="add-comment-form" action="/submit-form" method="post">
+					<div class="form-input">
+						<label for="user-name">your name</label>
+						<input type="text" id="user-name" name="name" />
+					</div>
+
+					<div class="form-input">
+						<label for="user-name">your comment</label>
+						<textarea id="user-comment" name="comment"></textarea>
+					</div>
+
+					<div class="form-input form-submit">
+						<input type="submit" value="Add Comment" />
+
+						<div class="form-error">Oof! There was an error!</div>
+						<div class="form-success">Your comment was posted!</div>
+					</div>
+				</form>
+			</div>
+
+			<div id="comments-display" class="comments-display section-column">
+				<h2>User Comments</h2>
+
+				<div class="user-comments">
+					{% for key, commentData in comments %}
+						<div class="comment">
+							<div class="comment-user-name">{{ commentData.userName }}</div>
+							<div class="comment-content">{{ commentData.content }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block footer %}
+	&copy; {{ currentYear }}
 {% endblock %}
